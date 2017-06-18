@@ -35,7 +35,7 @@ const bbox = function(text, x, y, details) {
   var lineHeight = fontHeight > font.unitsPerEm ? fontHeight : fontHeight + font.lineGap
 
   var height = lineHeight/font.unitsPerEm * fontSize
-  var width = font.layout(text).glyphs.reduce((last, curr) => last + curr.advanceWidth, 0) / font.unitsPerEm * fontSize
+  var width = font.layout(text).glyphs.reduce((last, curr) => last + curr.advanceWidth + details.letterSpacing / 1000, 0) / font.unitsPerEm * fontSize
 
   return new Box(x, y-font.ascent/font.unitsPerEm * fontSize, width, height)
 }

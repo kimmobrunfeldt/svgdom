@@ -410,9 +410,17 @@ var Node = invent({
         if(fontFamily) break
       }while(node = node.parentNode)
 
+      node = this
+      do{
+        letterSpacing = node.style.letterSpacing || node.getAttribute('letter-spacing')
+
+        if(letterSpacing) break
+      }while(node = node.parentNode)
+
       return {
         fontFamily,
         fontSize,
+        letterSpacing,
         fontFamilyMappings: this.ownerDocument.fontFamilyMappings,
         fontDir: this.ownerDocument.fontDir,
         preloaded: this.ownerDocument._preloaded
